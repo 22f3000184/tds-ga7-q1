@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Quarterly Earnings — Interactive Technical Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- RevealJS CSS (CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme">
+
+    <!-- Highlight.js theme (for code syntax highlighting) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- Title Slide -->
+        <section data-background-color="#0b0f1a" data-background-transition="fade">
+          <h1 style="color:#fff;">Quarterly Earnings Report</h1>
+          <h3 style="color:#9bd1ff;">Interactive Technical Briefing</h3>
+          <p style="color:#c9e8ff;">Prepared by: 22f3000184@ds.study.iitm.ac.in</p>
+          <aside class="notes">
+            Welcome stakeholders. This deck demonstrates interactive presentation capabilities with RevealJS,
+            tailored for financial reporting.
+          </aside>
+        </section>
+
+        <!-- Markdown Slide (inline) -->
+        <section data-markdown>
+          <textarea data-template>
+            ## Q2 Highlights (Markdown)
+
+            - Revenue growth: strong double-digit YoY
+            - Operating margin expansion
+            - Improved credit quality indicators
+            - Accelerated digital adoption
+
+            ---
+            ### Segment Performance
+
+            - Retail Banking: Stable NIM, increased fee income
+            - Corporate & Investment Banking: Trading revenue resilience
+            - Wealth Management: Net new assets positive
+          </textarea>
+          <aside class="notes">
+            This slide is authored in Markdown for speed, version control friendliness, and consistency.
+          </aside>
+        </section>
+
+        <!-- Optional: External Markdown Slide -->
+        <section data-markdown="md/highlights.md" data-separator="^\-\-\-$" data-separator-vertical="^\|\|\|$" data-separator-notes="^Note:"></section>
+
+        <!-- Animated Fragments -->
+        <section>
+          <h2>Key Drivers of Performance</h2>
+          <ul>
+            <li class="fragment">Net Interest Income uplift from higher rates</li>
+            <li class="fragment">Lower credit loss provisions</li>
+            <li class="fragment fade-up">Cost discipline and operating leverage</li>
+            <li class="fragment fade-in-then-out">Digital acquisition efficiency</li>
+          </ul>
+          <aside class="notes">
+            Advance through fragments to pace the narrative. Emphasize sustainability of drivers and risk controls.
+          </aside>
+        </section>
+
+        <!-- Code with Syntax Highlighting -->
+        <section>
+          <h2>Reconciliation Logic (Python)</h2>
+          <pre><code class="language-python" data-line-numbers="1-3|6-10|12">
+import pandas as pd
+
+# Load reported and adjusted figures
+reported = pd.read_csv('data/reported.csv')
+adjustments = pd.read_csv('data/adjustments.csv')
+
+# Merge and compute adjusted EBITDA
+df = reported.merge(adjustments, on='quarter', how='left')
+df['adj_ebitda'] = df['ebitda'] \
+  + df['restructuring_costs'] \
+  + df['one_time_items']
+
+print(df[['quarter','ebitda','adj_ebitda']].tail())
+          </code></pre>
+          <aside class="notes">
+            Demonstrate analytics methodology without exposing sensitive values. Discuss data governance and controls.
+          </aside>
+        </section>
+
+        <!-- Financial Math (KaTeX via Reveal Math plugin) -->
+        <section>
+          <h2>Financial Formulas</h2>
+          <p>Net Present Value (NPV):</p>
+          <p>\\[
+            \mathrm{NPV} = \sum_{t=1}^{T} \frac{CF_t}{(1+r)^t} - C_0
+          \\]</p>
+          <p>Capital Asset Pricing Model (CAPM):</p>
+          <p>\\[
+            \mathbb{E}[R_i] = R_f + \beta_i \left( \mathbb{E}[R_m] - R_f \right)
+          \\]</p>
+          <aside class="notes">
+            Reinforce valuation logic (discounting) and risk-return tradeoff (systematic risk via beta).
+          </aside>
+        </section>
+
+        <!-- Interactive Chart Demo -->
+        <section id="chart-slide">
+          <h2>Revenue Trend (Interactive)</h2>
+          <div id="rev-chart" class="chart"></div>
+          <p class="footnote">Demo uses non-sensitive, sample data for illustration.</p>
+          <aside class="notes">
+            A simple D3 bar chart is rendered when this slide becomes active. Replace with approved aggregates for production.
+          </aside>
+        </section>
+
+        <!-- Guidance / Notes -->
+        <section>
+          <h2>Guidance and Outlook</h2>
+          <p>Disciplined growth, resilient balance sheet, tech-led efficiency.</p>
+          <aside class="notes">
+            Highlight macro headwinds, funding costs, capital allocation, stress scenarios, and regulatory agenda.
+          </aside>
+        </section>
+
+        <!-- Contact -->
+        <section>
+          <h2>Thank You</h2>
+          <p>For follow-ups: 22f3000184@ds.study.iitm.ac.in</p>
+          <p>Shortcuts: S (notes), O/ESC (overview), F (fullscreen), B or . (pause), ? (help)</p>
+          <aside class="notes">
+            Invite Q&A. Direct to appendix or data room if applicable.
+          </aside>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Reveal core JS -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+
+    <!-- Plugins: Markdown, Highlight, Math, Notes -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+
+    <!-- D3 for interactive chart -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+    <!-- Initialize Reveal -->
+    <script>
+      const deck = new Reveal({
+        width: 1280,
+        height: 720,
+        margin: 0.04,
+        controls: true,
+        progress: true,
+        history: true,
+        transition: 'slide',
+        plugins: [ RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealNotes ],
+        math: { }
+      });
+      deck.initialize();
+
+      // Render chart when the chart slide is visible
+      deck.on('slidechanged', (e) => {
+        if (e.currentSlide && e.currentSlide.id === 'chart-slide') {
+          if (!window.__revChartRendered) {
+            window.__revChartRendered = true;
+            renderRevenueChart();
+          }
+        }
+      });
+    </script>
+
+    <!-- Custom visualization logic -->
+    <script src="js/visualizations.js"></script>
+  </body>
+</html>
