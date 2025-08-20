@@ -23,7 +23,9 @@
         <section data-background-color="#0b0f1a" data-background-transition="fade">
           <h1 style="color:#fff;">Quarterly Earnings Report</h1>
           <h3 style="color:#9bd1ff;">Interactive Technical Briefing</h3>
-          <p style="color:#c9e8ff;">Prepared by: 22f3000184@ds.study.iitm.ac.in</p>
+          <p>Prepared by: <span id="contact-email"></span></p>
+          <p>Contact: <a class="contact-email-link"></a></p>
+
           <aside class="notes">
             Welcome stakeholders. This deck demonstrates interactive presentation capabilities with RevealJS,
             tailored for financial reporting.
@@ -181,4 +183,26 @@ print(df[['quarter','ebitda','adj_ebitda']].tail())
     <!-- Custom visualization logic -->
     <script src="js/visualizations.js"></script>
   </body>
+  <script>
+  (function() {
+    const user = "22f3000184";
+    const domain = "ds.study.iitm.ac.in";
+    const email = user + "@" + domain;
+
+    // Update all email placeholders
+    const slots = document.querySelectorAll('#contact-email, .contact-email');
+    slots.forEach(el => {
+      el.textContent = email;
+    });
+
+    // Optional: also make it a clickable mailto link
+    const linkTargets = document.querySelectorAll('.contact-email-link');
+    linkTargets.forEach(el => {
+      el.setAttribute('href', 'mailto:' + email);
+      el.textContent = email;
+    });
+  })();
+</script>
+
 </html>
+
